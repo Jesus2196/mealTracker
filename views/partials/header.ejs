@@ -15,8 +15,8 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/">Home</a>&nbsp;&nbsp;|&nbsp;&nbsp;
     <% if (user) { %>
-      <a class="navbar-brand" href="/">All Meals</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-      <a class="navbar-brand" href="/">Add Meal</a>
+      <a class="navbar-brand" href="/meals">All Meals</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a class="navbar-brand" href="/meals/new">Add Meal</a>
       <a href="/logout">Log Out</a>
       <% } else { %>
         <a href="/auth/google" class="login">Sign In&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
