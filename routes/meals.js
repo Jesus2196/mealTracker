@@ -4,5 +4,6 @@ const mealsCtrl = require('../controllers/meals');
 const isLoggedIn = require('../config/auth');
 
 router.get('/', mealsCtrl.index);
+router.get('/new', mealsCtrl.new);
 
 module.exports = router;
