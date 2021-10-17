@@ -1,5 +1,125 @@
 <%- include('./partials/header') %>
 
-<h1>Meal Tracker</h1>
+    <div class="text-center">
+        <h1>Welcome To Your Own Personal Meal Tracker</h1>
 
-<%- include('./partials/footer') %>
+        <!-- Filler text for now; wanting to explain the usecase / purpose of this meal tracker -->
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea eum in tempore cumque mollitia ut aperiam sapiente
+        voluptatem placeat, facere modi repellendus, fuga nostrum nam commodi alias asperiores, nihil magnam?
+        Quisquam sint veniam, dignissimos voluptates minima officia quidem reiciendis iure voluptate excepturi non
+        laborum. Error eveniet quis saepe dolores laborum nam voluptas possimus nemo accusantium! A ut dignissimos quam
+        omnis!
+        Sunt nesciunt ipsa eum itaque nostrum, impedit commodi quo sapiente ut quae possimus cumque, nam iusto.
+        Perferendis, ab. Adipisci dolor eum nisi odio provident vel sequi reiciendis, quasi dicta neque!
+        Impedit neque repudiandae iste ad, pariatur deserunt! Perferendis, inventore nostrum eum, dignissimos laudantium
+        cum non impedit autem illo voluptas ratione exercitationem modi voluptatibus neque nemo magni at magnam qui
+        voluptatum?
+        Sint impedit animi voluptate dignissimos vel aperiam cumque. Qui adipisci deserunt iusto earum vero, culpa
+        laboriosam amet accusamus at est cum minima porro necessitatibus aliquam corporis? Pariatur voluptate earum
+        corporis.
+        <hr>
+
+        <h3>Example of what your personalized page could look like:</h3>
+
+        <div class="row">
+            <div class="column">
+                <p>Daily Meal Tracker</p>
+                <table>
+                    <tr>
+                        <th>Date</th>
+                        <th>Breakfast</th>
+                        <th>Lunch</th>
+                        <th>Dinner</th>
+                        <th>Snack(s)</th>
+                    </tr>
+                    <tr>
+                        <td>10/10</td>
+                        <td>Pancakes</td>
+                        <td>Turkey Sandwich</td>
+                        <td>Lasagna</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <td>10/11</td>
+                        <td>N/A</td>
+                        <td>Chiptole Bowl</td>
+                        <td>AYCE Sushi</td>
+                        <td>Iced Coffee</td>
+                    </tr>
+                    <tr>
+                        <td>10/12</td>
+                        <td>Oatmeal w/ Fruit</td>
+                        <td>Chick-fil-A</td>
+                        <td>Protein Smoothie</td>
+                        <td>Takoyaki</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="column">
+                <p>Weekly Calorie Intake / Money Spent</p>
+                <button class="accordion">Oct 3-9</button>
+                <div class="panel">
+                    <table>
+                        <tr>
+                            <th>Calories</th>
+                            <th>Price</th>
+                        </tr>
+                        <tr>
+                            <td>12,323</td>
+                            <td>$556</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <button class="accordion">Oct 10-16</button>
+                <div class="panel">
+                    <table>
+                        <tr>
+                            <th>Calories</th>
+                            <th>Price</th>
+                        </tr>
+                        <tr>
+                            <td>16,230</td>
+                            <td>$650</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <button class="accordion">Oct 17-23</button>
+                <div class="panel">
+                    <table>
+                        <tr>
+                            <th>Calories</th>
+                            <th>Price</th>
+                        </tr>
+                        <tr>
+                            <td>13,250</td>
+                            <td>$550</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+    </script>
+
+    <%- include('./partials/footer') %>
