@@ -4,6 +4,7 @@ module.exports = {
     index,
     new: newMeal,
     create,
+    show,
 }
 
 function index(req, res) {
@@ -24,5 +25,14 @@ function create(req, res) {
     meal.save(function (err) {
         if (err) return res.redirect('/meals/new');
         res.redirect('/meals');
+    });
+}
+
+function show(req, res) {
+    Meal.findById(req.params.id, function (err, meal) {
+        res.render("meals/show", {
+            meal,
+            title: "Details",
+        });
     });
 }
