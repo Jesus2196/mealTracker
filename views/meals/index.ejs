@@ -19,7 +19,7 @@
                         <% meals.forEach(function(m) { %>
                             <tr>
                                 <td>
-                                    <%= new Date().toLocaleString();%>
+                                    <%= m.date.toDateString(); %>
                                 </td>
                                 <td>
                                     <%= m.breakfast %>

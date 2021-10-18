@@ -4,7 +4,11 @@
         <div class="row">
             <div class="column">
                 <h2>Add New Meal(s)</h2>
-                <form action="/meals" method="post">
+                <form action="/meals" method="POST">
+                    <div class="form-group">
+                        <label>Date:</label>
+                        <input type="datetime-local" name="date" class="form-control">
+                    </div>
                     <div class="form-group">
                         <label>Breakfast:</label>
                         <input type="text" name="breakfast" class="form-control"
