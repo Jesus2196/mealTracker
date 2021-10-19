@@ -90,3 +90,19 @@ hr {
   background-color: white;
   overflow: hidden;
 }
+
+.chart-container {
+  width: 50%;
+  height: 50%;
+  margin: auto;
+}
+
+#float1{
+  width: 50%;
+  float: left;
+}
+
+#float2{
+  width: 50%;
+  float: right;
+}

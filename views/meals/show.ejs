@@ -2,7 +2,8 @@
 
 
     <div class="text-center">
-        <h1>Meal Details for <%= meal.date.toDateString(); %></h1>
+        <h1>Meal Details for <%= meal.date.toDateString(); %>
+        </h1>
         <table class="table table-striped table-bordered">
             <tr>
                 <th>Breakfast:</th>
@@ -10,10 +11,8 @@
                     <%= meal.breakfast %>
                 </td>
                 <td>
-                    550 Calories
-                    <!-- Filler text for now -->
+                    <%= meal.breakfastCals %> Calories
                 </td>
-                <td><a href="/">Edit</a></td>
             </tr>
             <tr>
                 <th>Lunch:</th>
@@ -21,10 +20,8 @@
                     <%= meal.lunch %>
                 </td>
                 <td>
-                    800 Calories
-                    <!-- Filler text for now -->
+                    <%= meal.lunchCals %> Calories
                 </td>
-                <td><a href="/">Edit</a></td>
             </tr>
             <tr>
                 <th>Dinner:</th>
@@ -32,10 +29,8 @@
                     <%= meal.dinner %>
                 </td>
                 <td>
-                    0 Calories
-                    <!-- Filler text for now -->
+                    <%= meal.dinnerCals %> Calories
                 </td>
-                <td><a href="/">Edit</a></td>
             </tr>
             <tr>
                 <th>Snack(s):</th>
@@ -43,13 +38,57 @@
                     <%= meal.snacks %>
                 </td>
                 <td>
-                    0 Calories
-                    <!-- Filler text for now -->
+                    <%= meal.snackCals %> Calories
                 </td>
-                <td><a href="/">Edit</a></td>
             </tr>
         </table>
+        <input type="submit" class="btn btn-primary" value="Add/Edit Meals"><br><br>
     </div>
 
 
-    <%- include('../partials/footer') %>
+
+    <% let totalCalories=meal.breakfastCals + meal.lunchCals + meal.dinnerCals + meal.snackCals %>
+
+
+
+        <body>
+            <div id="float1" class="card chart-container">
+                <canvas id="chart1"></canvas>
+            </div>
+            <div id="float2" class="card chart-container">
+                <canvas id="chart2"></canvas>
+            </div>
+        </body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+
+
+
+        <script>
+            const ctx1 = document.getElementById("chart1").getContext('2d');
+            const myChart1 = new Chart(ctx1, {
+                type: 'pie',
+                data: {
+                    labels: ["Breakfast Calories", "Lunch Calories", "Dinner Calories", "Snack Calories"],
+                    datasets: [{
+                        label: 'food Items',
+                        backgroundColor: ["#0074D9", "#FF4136", "#2ECC40",
+                            "#FF851B"],
+                        data: [<%= meal.breakfastCals %>,<%= meal.lunchCals %>,<%= meal.dinnerCals %>,<%= meal.snackCals %>],
+                    }]
+                },
+            });
+            const ctx2 = document.getElementById("chart2").getContext('2d');
+            const myChart2 = new Chart(ctx2, {
+                type: 'doughnut',
+                data: {
+                    labels: ["Proteins", "Carbs", "Fats"],
+                    datasets: [{
+                        label: 'food Items',
+                        data: [170, 222, 58], //Hard coded numbers for now
+                        backgroundColor: ["#7FDBFF", "#B10DC9","#001f3f"]
+                    }]
+                },
+            });
+        </script>
+
+        <%- include('../partials/footer') %>

@@ -10,7 +10,7 @@ module.exports = {
 function index(req, res) {
     Meal.find({}, function (err, meals) {
         res.render('meals/index', { meals: meals })
-    });
+    }).sort("date");
 }
 
 function newMeal(req, res) {
