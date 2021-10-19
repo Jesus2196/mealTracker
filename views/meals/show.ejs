@@ -47,18 +47,19 @@
 
 
 
-    <% let totalCalories=meal.breakfastCals + meal.lunchCals + meal.dinnerCals + meal.snackCals %>
+    <% let totalCalories = meal.breakfastCals + meal.lunchCals + meal.dinnerCals + meal.snackCals %>
 
 
 
-        <body>
-            <div id="float1" class="card chart-container">
-                <canvas id="chart1"></canvas>
+        <div id="float1" class="card chart-container">
+            <canvas id="chart1"></canvas>
+            <div class="text-center">
+                <%= totalCalories %> Calories
             </div>
-            <div id="float2" class="card chart-container">
-                <canvas id="chart2"></canvas>
-            </div>
-        </body>
+        </div>
+        <div id="float2" class="card chart-container">
+            <canvas id="chart2"></canvas>
+        </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 
 
@@ -85,7 +86,7 @@
                     datasets: [{
                         label: 'food Items',
                         data: [170, 222, 58], //Hard coded numbers for now
-                        backgroundColor: ["#7FDBFF", "#B10DC9","#001f3f"]
+                        backgroundColor: ["#7FDBFF", "#B10DC9", "#001f3f"]
                     }]
                 },
             });
