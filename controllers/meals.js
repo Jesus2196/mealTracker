@@ -43,13 +43,6 @@ function edit(req, res) {
     });
 }
 
-// function edit(req, res) {
-//     Meal.findOne({_id: req.params.id, user: req.user._id}, function(err, meal) {
-//         if (err || !meal) return res.redirect('/meals');
-//         res.render('meals/edit', { meal });
-//     });
-// }
-
 function update(req, res) {
     Meal.findByIdAndUpdate(req.params.id, req.body, function (err, meal) {
         if (err) {
@@ -58,11 +51,3 @@ function update(req, res) {
         res.redirect("/meals");
     });
 }
-
-// function update(req, res) {
-//     Meal.findOneAndUpdate({_id: req.params.id, user: req.user._id}, req.body, {new: true},
-//         function(err, meal) {
-//             if (err || !meal) return res.render('meals/edit', { meal });
-//             res.redirect('/meals');
-//         });
-// }
