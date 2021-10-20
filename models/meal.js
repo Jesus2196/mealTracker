@@ -2,6 +2,7 @@ let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 const mealSchema = new Schema({
+    user: {type: Schema.Types.ObjectId, ref: 'User'},
     date: {
         type: Date,
     },
@@ -36,3 +37,7 @@ const mealSchema = new Schema({
 });
 
 module.exports = mongoose.model('Meal', mealSchema);
+
+
+//user centric on this page
+

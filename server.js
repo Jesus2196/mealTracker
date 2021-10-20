@@ -45,7 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const isLoggedIn = require('./config/auth');
 
 app.use('/', indexRouter);
-app.use('/meals', mealsRouter);
+app.use('/meals', isLoggedIn, mealsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

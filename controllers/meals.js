@@ -50,6 +50,6 @@ function update(req, res) {
         if (err) {
             res.render("meals/edit", { meal });
         }
-        res.redirect(`meals/${meal._id}`);
+        res.redirect("/meals");
     });
 }
