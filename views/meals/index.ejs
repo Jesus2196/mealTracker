@@ -19,7 +19,8 @@
                         <% meals.forEach(function(m) { %>
                             <tr>
                                 <td>
-                                    <%= (m.date.getMonth() + 1) + '/' + (m.date.getDate() + 1) + '/' +  m.date.getFullYear() %>
+                                    <%= (m.date.getMonth() + 1) + '/' + (m.date.getDate() + 1) + '/' +
+                                        m.date.getFullYear() %>
                                 </td>
                                 <td>
                                     <%= m.breakfast %>
@@ -33,40 +34,32 @@
                                 <td>
                                     <%= m.snacks %>
                                 </td>
-                                <td><a href="/meals/<%=m._id%>">Add/Edit</a></td>
+                                <td><a href="/meals/<%=m._id%>/edit">Add/Edit</a></td>
                             </tr>
                             <% }); %>
                     </tbody>
                 </table>
             </div>
             <div class="col">
-                <p>Weekly Calorie Intake / Money Spent</p>
-                <button class="accordion">Oct. 17</button>
+                <p>Daily Calorie Intake</p>
+                <% meals.forEach(function(d) { %>
+                    <button class="accordion">
+                        <%= (d.date.getMonth() + 1) + '/' + (d.date.getDate() + 1) + '/' + d.date.getFullYear() %>
+                    </button>
                     <div class="panel">
                         <table>
                             <tr>
                                 <th>Daily Calories</th>
-                                <th>Macro Breakdown</th>
+                                <th>Calorie Breakdown</th>
                             </tr>
                             <tr>
-                                <td>2200</td> <!-- Hard coded for now -->
-                                <td><a href="/">Details</a></td><!-- Hard coded for now -->
+                                <td>
+                                    <%= d.breakfastCals + d.lunchCals + d.dinnerCals + d.snackCals %>
+                                <td><a href="/meals/<%= d._id%>">Details</a></td>
                             </tr>
                         </table>
                     </div>
-                        <button class="accordion">Oct 17-23</button>
-                        <div class="panel">
-                            <table>
-                                <tr>
-                                    <th>Calorie Intake This Week</th>
-                                    <th>Money Spent This Week</th>
-                                </tr>
-                                <tr>
-                                    <td><a href="/">15,250</a></td><!-- Hard coded for now -->
-                                    <td><a href="/">$250</a></td><!-- Hard coded for now -->
-                                </tr>
-                            </table>
-                        </div>
+                    <% }); %>
             </div>
         </div>
     </div>
