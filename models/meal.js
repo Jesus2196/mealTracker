@@ -1,6 +1,12 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
+const notesSchema = new Schema({
+    content: String,
+}, {
+    timestamps: true
+});
+
 const mealSchema = new Schema({
     user: {type: Schema.Types.ObjectId, ref: 'User'},
     date: {
@@ -33,7 +39,8 @@ const mealSchema = new Schema({
     snackCals: {
         type: Number,
         default: 0
-    }
+    }, 
+    notes: [notesSchema]
 });
 
 module.exports = mongoose.model('Meal', mealSchema);

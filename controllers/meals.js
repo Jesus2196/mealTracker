@@ -10,7 +10,7 @@ module.exports = {
 }
 
 function index(req, res) {
-    Meal.find({}, function (err, meals) {
+    Meal.find({ user: req.user._id }, function (err, meals) {
         res.render('meals/index', { meals: meals })
     }).sort("date");
 }
@@ -18,17 +18,6 @@ function index(req, res) {
 function newMeal(req, res) {
     res.render('meals/new');
 }
-
-// function create(req, res) {
-//     for (let key in req.body) {
-//         if (req.body[key] === '') delete req.body[key];
-//     }
-//     let meal = new Meal(req.body);
-//     meal.save(function (err) {
-//         if (err) return res.redirect('/meals/new');
-//         res.redirect('/meals');
-//     });
-// }
 
 function create(req, res) {
     const meal = new Meal(req.body);
