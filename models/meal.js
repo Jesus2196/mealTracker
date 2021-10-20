@@ -7,7 +7,6 @@ const mealSchema = new Schema({
     },
     breakfast: {
         type: String,
-        default: '[Empty]',
     },
     breakfastCals: {
         type: Number,
@@ -15,7 +14,6 @@ const mealSchema = new Schema({
     },
     lunch: {
         type: String,
-        default: '[Empty]',
     },
     lunchCals: {
         type: Number,
@@ -23,7 +21,6 @@ const mealSchema = new Schema({
     },
     dinner: {
         type: String,
-        default: '[Empty]',
     },
     dinnerCals: {
         type: Number,
@@ -31,7 +28,6 @@ const mealSchema = new Schema({
     },
     snacks: {
         type: String,
-        default: '[Empty]',
     },
     snackCals: {
         type: Number,

@@ -5,6 +5,8 @@ module.exports = {
     new: newMeal,
     create,
     show,
+    edit,
+    update,
 }
 
 function index(req, res) {
@@ -34,5 +36,20 @@ function show(req, res) {
             meal,
             title: "Details",
         });
+    });
+}
+
+function edit(req, res) {
+    Meal.findById(req.params.id, function (err, meal) {
+        res.render('meals/edit', { meal });
+    });
+}
+
+function update(req, res) {
+    Meal.findByIdAndUpdate(req.params.id, req.body, function (err, meal) {
+        if (err) {
+            res.render("meals/edit", { meal });
+        }
+        res.redirect(`meals/${meal._id}`);
     });
 }

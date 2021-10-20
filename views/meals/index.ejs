@@ -19,7 +19,7 @@
                         <% meals.forEach(function(m) { %>
                             <tr>
                                 <td>
-                                    <%= m.date.toDateString(); %>
+                                    <%= (m.date.getMonth() + 1) + '/' + (m.date.getDate() + 1) + '/' +  m.date.getFullYear() %>
                                 </td>
                                 <td>
                                     <%= m.breakfast %>

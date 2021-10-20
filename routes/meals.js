@@ -4,8 +4,10 @@ const mealsCtrl = require('../controllers/meals');
 const isLoggedIn = require('../config/auth');
 
 router.get('/', mealsCtrl.index);
-router.get('/new', mealsCtrl.new);
-router.post('/', mealsCtrl.create);
-router.get('/:id', mealsCtrl.show);
+router.get('/new', isLoggedIn, mealsCtrl.new);
+router.post('/', isLoggedIn, mealsCtrl.create);
+router.get('/:id', isLoggedIn, mealsCtrl.show);
+router.get('/:id/edit', isLoggedIn, mealsCtrl.edit);
+router.put('/:id', isLoggedIn, mealsCtrl.update);
 
 module.exports = router;
