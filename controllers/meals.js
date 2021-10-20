@@ -20,11 +20,14 @@ function newMeal(req, res) {
 }
 
 function create(req, res) {
-    const meal = new Meal(req.body);
-    meal.user = req.user._id;
-    meal.save(function(err) {
-        if (err) return res.redirect('/meals/new');
-        res.redirect('/meals');
+    Meal.findOne({user: req.user._id, date: req.body.date }, function(err, meal) {
+        if (meal) return res.redirect('/meals/new');
+        meal = new Meal(req.body);
+        meal.user = req.user._id;
+        meal.save(function(err) {
+            if (err) return res.redirect('/meals/new');
+            res.redirect('/meals');
+        });
     });
 }
 
