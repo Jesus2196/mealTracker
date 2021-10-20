@@ -19,12 +19,21 @@ function newMeal(req, res) {
     res.render('meals/new');
 }
 
+// function create(req, res) {
+//     for (let key in req.body) {
+//         if (req.body[key] === '') delete req.body[key];
+//     }
+//     let meal = new Meal(req.body);
+//     meal.save(function (err) {
+//         if (err) return res.redirect('/meals/new');
+//         res.redirect('/meals');
+//     });
+// }
+
 function create(req, res) {
-    for (let key in req.body) {
-        if (req.body[key] === '') delete req.body[key];
-    }
-    let meal = new Meal(req.body);
-    meal.save(function (err) {
+    const meal = new Meal(req.body);
+    meal.user = req.user._id;
+    meal.save(function(err) {
         if (err) return res.redirect('/meals/new');
         res.redirect('/meals');
     });
@@ -45,6 +54,13 @@ function edit(req, res) {
     });
 }
 
+// function edit(req, res) {
+//     Meal.findOne({_id: req.params.id, user: req.user._id}, function(err, meal) {
+//         if (err || !meal) return res.redirect('/meals');
+//         res.render('meals/edit', { meal });
+//     });
+// }
+
 function update(req, res) {
     Meal.findByIdAndUpdate(req.params.id, req.body, function (err, meal) {
         if (err) {
@@ -53,3 +69,11 @@ function update(req, res) {
         res.redirect("/meals");
     });
 }
+
+// function update(req, res) {
+//     Meal.findOneAndUpdate({_id: req.params.id, user: req.user._id}, req.body, {new: true},
+//         function(err, meal) {
+//             if (err || !meal) return res.render('meals/edit', { meal });
+//             res.redirect('/meals');
+//         });
+// }
