@@ -52,20 +52,15 @@
 
 
 
-        <div id="float1" class="card chart-container">
+        <div class="card chart-container">
             <canvas id="chart1"></canvas>
             <div class="text-center">
                 <p>
                     <%= totalCalories %> Calories
                 </p>
             </div>
-        </div>
-        <div id="float2" class="card chart-container">
-            <canvas id="chart2"></canvas>
-            <div class="text-center">
-                <p>Filler Text</p>
-            </div>
-        </div>
+        </div><br><br>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 
 
@@ -77,59 +72,52 @@
                 data: {
                     labels: ["Breakfast Calories", "Lunch Calories", "Dinner Calories", "Snack Calories"],
                     datasets: [{
-                        label: 'food Items',
-                        backgroundColor: ["#0074D9", "#FF4136", "#2ECC40",
-                            "#FF851B"],
+                        label: 'Food Items',
+                        backgroundColor: ["#0074D9", "#FF4136", "#2ECC40", "#FF851B"],
                         data: [<%= meal.breakfastCals %>,<%= meal.lunchCals %>,<%= meal.dinnerCals %>,<%= meal.snackCals %>],
-                    }]
-                },
-            });
-            const ctx2 = document.getElementById("chart2").getContext('2d');
-            const myChart2 = new Chart(ctx2, {
-                type: 'doughnut',
-                data: {
-                    labels: ["Proteins", "Carbs", "Fats"],
-                    datasets: [{
-                        label: 'food Items',
-                        backgroundColor: ["#7FDBFF", "#B10DC9", "#001f3f"],
-                        data: [170, 222, 58] //Hard coded numbers for now
                     }]
                 },
             });
         </script>
 
-        <form action="/meals/<%= meal._id %>/notes" method="POST">
-            <label>Notes</label>
-            <textarea name="content"></textarea>
-            <input type="submit" class="btn btn-primary" value="Add Notes">
-        </form>
+        <div class="text-center">
+            <form action="/meals/<%= meal._id %>/notes" method="POST">
+                <textarea name="content" placeholder="Notes" cols="45" rows="3" w></textarea><br>
+                <input type="submit" class="btn btn-primary" value="Add Note">
+            </form><br><br>
 
-        <% if (meal.notes.length) { %>
-            <table>
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Notes</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <% meal.notes.forEach(function(n) { %>
-                  <tr>
-                    <td><%= n.createdAt.toLocaleDateString() %></td>
-                    <td><%= n.content %></td>
-                    <td>
-                        <form action="/notes/<%= n._id %>?_method=DELETE" method="POST">
-                          <button type="submit">X</button>
-                        </form>
-                    </td>
-                  </tr>
-                <% }); %>
-              </tbody>
-            </table>
-          <% } else { %>
-            <h5>No Notes Yet</h5>
-          <% } %>
+
+            <% if (meal.notes.length) { %>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Notes</th>
+                            <th>Delete?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% meal.notes.forEach(function(n) { %>
+                            <tr>
+                                <td>
+                                    <%= n.createdAt.toDateString() %>
+                                </td>
+                                <td>
+                                    <%= n.content %>
+                                </td>
+                                <td>
+                                    <form action="/notes/<%= n._id %>?_method=DELETE" method="POST">
+                                        <button type="submit" class="btn btn-danger">X</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+                <% } else { %>
+                    <h5>No Notes Yet</h5>
+                    <% } %>
+        </div>
 
 
         <%- include('../partials/footer') %>

@@ -2,7 +2,6 @@
 
 <div class="text-center">
         <h2>Add/Edit Meal(s)</h2>
-        <!-- <form action="/meals" method="POST"> -->
         <form action="/meals/<%= meal._id %>?_method=PUT" method="POST">
             <div class="col-6 mx-auto">
                 <div class="form-group">
@@ -58,8 +57,3 @@
     </div>
 
     <%- include('../partials/footer') %>
-
-
-    <!-- diary or log of certain meals (notes) be able to add notes under graphs -->
-
-    <!-- create note schema inside meal schema  -> date and time -> content -> foreach note display in a form to add note -->
