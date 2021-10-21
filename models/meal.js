@@ -8,7 +8,7 @@ const notesSchema = new Schema({
 });
 
 const mealSchema = new Schema({
-    user: {type: Schema.Types.ObjectId, ref: 'User'},
+    user: { type: Schema.Types.ObjectId, ref: 'User' },
     date: {
         type: Date,
     },
@@ -39,7 +39,7 @@ const mealSchema = new Schema({
     snackCals: {
         type: Number,
         default: 0
-    }, 
+    },
     notes: [notesSchema]
 });
 

@@ -11,10 +11,10 @@ passport.use(
       callbackURL: process.env.GOOGLE_CALLBACK
     },
     // verify callback function
-    async function(accessToken, refreshToken, profile, cb) {
+    async function (accessToken, refreshToken, profile, cb) {
       // a user has logged in with Google
       try {
-        let user = await User.findOne({googleId: profile.id});
+        let user = await User.findOne({ googleId: profile.id });
         if (user) return cb(null, user);
         // we have a NEW user
         user = await User.create({
@@ -31,13 +31,13 @@ passport.use(
   )
 );
 
-passport.serializeUser(function(user, cb) {
+passport.serializeUser(function (user, cb) {
   cb(null, user._id);
 });
 
-passport.deserializeUser(function(userId, cb) {
+passport.deserializeUser(function (userId, cb) {
   User.findById(userId)
-    .then(function(user) {
+    .then(function (user) {
       return cb(null, user);
     });
 });

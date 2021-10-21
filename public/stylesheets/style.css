@@ -63,10 +63,6 @@ hr {
   width: 1000px;
 }
 
-
-
-
-
 .accordion {
   background-color: #eee;
   color: #444;
@@ -81,7 +77,7 @@ hr {
 }
 
 .active, .accordion:hover {
-  background-color: #ccc; 
+  background-color: #ccc;
 }
 
 .panel {
@@ -97,12 +93,30 @@ hr {
   margin: auto;
 }
 
-#float1{
+#float1 {
   width: 50%;
   float: left;
 }
 
-#float2{
-  width: 50%;
+#float2 {
   float: right;
+}
+
+.blink {
+  animation: blinker 2s linear infinite;
+  color: #1c87c9;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+table {
+  table-layout: fixed;
+  word-wrap: break-word;
 }

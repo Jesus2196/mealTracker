@@ -7,6 +7,7 @@ module.exports = {
     show,
     edit,
     update,
+    delete: deleteMeal
 }
 
 function index(req, res) {
@@ -20,11 +21,11 @@ function newMeal(req, res) {
 }
 
 function create(req, res) {
-    Meal.findOne({user: req.user._id, date: req.body.date }, function(err, meal) {
+    Meal.findOne({ user: req.user._id, date: req.body.date }, function (err, meal) {
         if (meal) return res.redirect('/meals/new');
         meal = new Meal(req.body);
         meal.user = req.user._id;
-        meal.save(function(err) {
+        meal.save(function (err) {
             if (err) return res.redirect('/meals/new');
             res.redirect('/meals');
         });
@@ -53,4 +54,11 @@ function update(req, res) {
         }
         res.redirect("/meals");
     });
+}
+
+function deleteMeal(req, res) {
+    Meal.findByIdAndDelete(req.params.id,
+        function (err, meal) {
+            res.redirect('/meals');
+        })
 }

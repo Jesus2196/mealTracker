@@ -16,11 +16,11 @@ function create(req, res) {
 }
 
 function deleteNote(req, res) {
-    Meal.findOne({'notes._id': req.params.id, 'notes.userId': req.user._id },
-    function (err, meal) {
-        meal.notes.remove(req.params.id);
-        meal.save(function(err) {
-            res.redirect(`/meals/${meal._id}`);
+    Meal.findOne({ 'notes._id': req.params.id, 'notes.userId': req.user._id },
+        function (err, meal) {
+            meal.notes.remove(req.params.id);
+            meal.save(function (err) {
+                res.redirect(`/meals/${meal._id}`);
+            });
         });
-    });
 }
