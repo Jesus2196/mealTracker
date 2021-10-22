@@ -29,6 +29,7 @@
 
 ## Getting Started:
 * [Click here to start your journal](https://meals-tracker.herokuapp.com/)
+* [Link to Trello Board](https://trello.com/b/NpbDwozd/project-2-board)
 
 ## Next Steps:
 * Be able to allow the user to upload images of their meals
