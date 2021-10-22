@@ -19,7 +19,7 @@
 ### Edit Page:
 ![editMeal](https://i.imgur.com/JSavFDs.png)
 
-## Technoologies Used:
+## Technologies Used:
 * Mongoose
 * Node Express
 * Heroku
